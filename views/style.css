@@ -1,0 +1,51 @@
+.resultado {
+    display: inline-block;
+    margin-right: 20px; /* Espaço entre os elementos */
+}
+/* Estilos para o modal */
+.modal {
+    display: none; /* Oculta o modal por padrão */
+    position: fixed;
+    z-index: 1000; /* Ajuste conforme necessário */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Cor de fundo escura com transparência */
+}
+
+.modal-content {
+    background-color: #fefefe; /* Cor de fundo do conteúdo do modal */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra para efeito de profundidade */
+    width: 300px; /* Largura do modal */
+    padding: 20px; /* Espaçamento interno */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* Centraliza o modal horizontal e verticalmente */
+    text-align: center; /* Centraliza o conteúdo dentro do modal */
+}
+
+/* Estilos para os botões */
+.modal-content button {
+    margin: 10px; /* Espaçamento entre os botões */
+    padding: 10px 20px; /* Espaçamento interno dos botões */
+    border: none; /* Remove a borda */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Altera o cursor para indicar interatividade */
+}
+
+#bt_fechar {
+    background-color: #ccc; /* Cor de fundo do botão Cancelar */
+}
+
+#bt_excluir_confirmar {
+    background-color: #f44336; /* Cor de fundo do botão Excluir */
+    color: white; /* Cor do texto do botão Excluir */
+}
+
+/* Estilos para o texto dentro do modal */
+.modal-content h1 {
+    margin-bottom: 20px; /* Espaçamento inferior */
+}

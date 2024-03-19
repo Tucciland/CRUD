@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Produtos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form id="cadastroProduto" action="/cadastrar-produto" method="POST">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome"><br><br>
+        <label for="valor">Valor:</label>
+        <input type="number" id="valor" name="valor" min="0" step="0.01"><br><br>
+        <label for="descricao">Descrição:</label><br>
+        <textarea id="descricao" name="descricao" rows="4" cols="50"></textarea><br><br>
+        <input type="submit" value="Cadastrar">
+    </form>
+
+    <% resultado.forEach(function(v) { %>
+        <h1 class="id resultado"><%= v.PRO_ID %></h1>
+        <h1 class="nome resultado"><%= v.PRO_NOME %></h1>
+        <h1 class="valor resultado"><%= v.PRO_VALOR.toFixed(2) %></h1>
+        <a href="/editar-produto/<%= v.PRO_ID %>">
+            <button class="bt_editar resultado">Editar</button>
+        </a>
+        <button class="bt_excluir resultado" data-id="<%= v.PRO_ID %>">Excluir</button>
+        <br>
+    <% }); %>
+
+    <div id="myModal-delet" class="modal">
+        <div class="modal-content">
+            <h1>Realmente deseja deletar o produto?</h1>
+            <h2 id="idmodal"></h2>
+            <button id="bt_fechar">Cancelar</button>
+            <a id="realdelet" href="">
+                <button id="bt_excluir_confirmar">Excluir</button>
+            </a>           
+        </div>
+    </div>
+
+    <script>
+        var botoesExcluir = document.querySelectorAll('.bt_excluir');
+        var modal = document.getElementById('myModal-delet');
+        var btFechar = document.getElementById('bt_fechar');
+        var btExcluirConfirmar = document.getElementById('bt_excluir_confirmar');
+        var idProdutoExcluir; // Variável para armazenar o PRO_ID do produto a ser excluído
+    
+        botoesExcluir.forEach(function(botao) {
+            botao.addEventListener('click', function(event) {
+                idProdutoExcluir = event.target.dataset.id;
+                document.getElementById('idmodal').innerHTML = `<h2>${idProdutoExcluir}</h2>`;
+                document.getElementById('realdelet').href = `/deletar-produto/${idProdutoExcluir}`;
+                modal.style.display = 'block';
+            });
+        });
+
+        botoesExcluir.forEach(function(botao) {
+            botao.addEventListener('click', function(event) {
+                event.preventDefault(); // Evita que a ação padrão do link seja executada
+                modal.style.display = 'block';
+                idProdutoExcluir = event.target.dataset.id; // Recupera o PRO_ID do atributo de dados
+                document.getElementById('idmodal').innerHTML = `<h2>${idProdutoExcluir}</h2>`;
+                document.getElementById('realdelet').href = `/deletar-produto/${idProdutoExcluir}`;
+            });
+        });
+    
+        btFechar.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+    </script>    
+    
+    <script src="../CRUD.js"></script>
+</body>
+</html>

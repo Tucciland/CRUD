@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser')
 
 const path = require('path');
-const dbPath = 'C:/Users/User/Desktop/Tucciland/CRUD_testes/DUARTE_LANNA.FDB';
+const dbPath = 'C:/Users/user/Desktop/Tucci/Tucciland/CRUD/DUARTE_LANNA.FDB';
 
 let app = express();
 
